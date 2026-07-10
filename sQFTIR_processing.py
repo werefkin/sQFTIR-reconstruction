@@ -6,7 +6,6 @@ Created on Wed Jul  1 13:01:25 2026
 """
 
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.fft import fft, fftshift, ifft
 from scipy.interpolate import interp1d
 from dataclasses import dataclass
@@ -27,7 +26,7 @@ def fourier_transform_interferograms(
     # print('maxpos_actual:', maxpos + delta)
     interferogram_re = interferogram_half[:2 * (maxpos + delta)]
     # print('len_interferogram_re', len(interferogram_re))
-    
+
     # DC removal
     interferograms = interferogram_re - np.mean(interferogram_re, axis=0)
 
@@ -82,7 +81,7 @@ def calculate_ftir_spectrum(fd_spectrum, fd_reference, xaxis_lambda):
     spectrum_fd, wn_corr = remap_to_k(fd_spectrum, fd_reference, xaxis_lambda)
     # Fourier transform to time domain
     spectrum_td = fftshift(ifft(spectrum_fd, norm='ortho'))
-    
+
     # center interferogram and Fourier transform back
     spectrum, kernel, kernel_pad = fourier_transform_interferograms(spectrum_td)
     # correct x axis
@@ -103,4 +102,3 @@ def calculate_ftir_spectrum(fd_spectrum, fd_reference, xaxis_lambda):
         spectrum_fd=spectrum_fd,
         wn_corr=wn_corr
     )
-    

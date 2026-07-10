@@ -44,14 +44,14 @@ ax.set_ylim(0, 1.8)
 
 # Original spectrum
 fig, ax = plt.subplots()
-ax.plot(wavelengths,FD_spectrum_sample)
+ax.plot(wavelengths, FD_spectrum_sample)
 ax.set_title('Original spectrum')
 ax.set_xlabel('Wavelengths (nm)')
 ax.set_ylabel('Intensity')
 
 # Remapped FD spectrum
 fig, ax = plt.subplots()
-ax.plot(sqftir_data_sa.wn_corr*1e7,sqftir_data_sa.spectrum_fd)
+ax.plot(sqftir_data_sa.wn_corr * 1e7, sqftir_data_sa.spectrum_fd)
 ax.set_title('FD Spectrum remapped to k-space')
 ax.set_xlabel('Wavenumbers (cm$^{-1}$)')
 ax.set_ylabel('Intensity')
@@ -76,7 +76,6 @@ ax.plot(sqftir_data_sa.corr_wn, sqftir_data_sa.spectrum)
 ax.set_title('Sample spectrum')
 ax.set_xlabel('Wavenumbers (cm$^{-1}$)')
 ax.set_ylabel('Intensity')
-
 
 
 # calculate spectral resolution
