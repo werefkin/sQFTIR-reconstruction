@@ -27,9 +27,6 @@ def fourier_transform_interferograms(
     interferogram_re = interferogram_half[:2 * (maxpos + delta)]
     # print('len_interferogram_re', len(interferogram_re))
 
-    # DC removal
-    interferograms = interferogram_re - np.mean(interferogram_re, axis=0)
-
     # Apodization
     window = np.blackman(len(interferogram_re))
     kernel = interferogram_re * window
@@ -51,6 +48,7 @@ def fourier_transform_interferograms(
 
 
 def remap_to_k(data, ref_spectrum, xx_lambd):
+    # DC removal
     data = data - ref_spectrum
     lambda_space_range = xx_lambd[:]
     k_space_range = 1 / lambda_space_range

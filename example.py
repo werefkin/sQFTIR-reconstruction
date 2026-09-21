@@ -72,7 +72,7 @@ ax.set_ylabel('Intensity')
 
 # Spectrum sample
 fig, ax = plt.subplots()
-ax.plot(sqftir_data_sa.corr_wn, sqftir_data_sa.spectrum)
+ax.plot(sqftir_data_sa.corr_wn, np.real(sqftir_data_sa.spectrum))
 ax.set_title('Sample spectrum')
 ax.set_xlabel('Wavenumbers (cm$^{-1}$)')
 ax.set_ylabel('Intensity')
